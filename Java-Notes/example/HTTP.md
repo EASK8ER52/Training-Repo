@@ -4,6 +4,13 @@ Hyper Text Transfer Protocol (http) is the most popular way of transfering infor
     - This is the part of the request that tells the web server what information you want
 - body
     - many http requests are going to contain a body: this is the information that is needed to complete whatever request you are making
+- verb
+    - the "verb" of any http request provides context for what you as the requester are trying to accomplish with your http request
+        - GET: the requester wants to "get" some kind of information
+        - POST: typically used when the request wants to create some kind of entry or provide new information to the web application
+        - PUT: Typically used when the requester wants to update all of some resource handled by the web application
+        - PATCH: typically when the requester wants to update SOME of the resourced handled by the web application
+        - DELETE: typically used when the requester wants to delete some resource handled by the web application
 
 You also should be familiar with following components of an HTTP response:
 - body
