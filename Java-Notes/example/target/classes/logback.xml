@@ -1,0 +1,53 @@
+<!-- All your configuration for your loggers need to go inside the configuration tags -->
+<configuration>
+
+    <!-- appenders are about how you tell logback how to format your logs -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+        </encoder>
+    
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <!-- The file tags tells logback where we want our log to go-->
+        <file>logs/staticLogs.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/rollingFile.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/rollingLogFile.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>7</maxHistory>
+            <totalSizeCap>3GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- root tells logback what your default log settings should be if you don't specify any -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>
+
+<!--
+    Logging Levels
+        TRACE: This level gives all the nitt gritty details of your application
+        DEBUG: Not as much detail as the TRAVE level, but enough to do debugging if necessary
+        INFO:  This gives general information about your application 
+        WARN:  This level is used when the developer needs to be aware of something, does not need to be catastrophic
+        ERROR: When something actually goes wrong use this error level
+        NONE (this turns off logging)
+    Note that the farther down the list you go, the less info you got. INFO level loggind does not
+    include DEBUG or TRACE logs.
+-->
+

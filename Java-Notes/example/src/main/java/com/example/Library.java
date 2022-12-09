@@ -3,15 +3,26 @@ package com.example;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import io.javalin.Javalin;
 
 public class Library
 {
     public static List<Book> library = new ArrayList<>();
 
+    public static Logger logger = LoggerFactory.getLogger(Library.class);
+
     public static void main(String[] args)
     {
         // Local Declarations
+        logger.trace("This log was created for trace");
+        logger.debug("This log was created for debug");
+        logger.info("Application Starting!");
+        logger.warn("This log was created at the warn level");
+        logger.error("This log was created at the error level");
+        
         Book startingBook = new Book();
         Javalin app = Javalin.create();
         // Processing
